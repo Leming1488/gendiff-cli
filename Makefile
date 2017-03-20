@@ -6,7 +6,7 @@ install:
 	sudo yarn
 
 start:
-	npm run babel-node -- 'src/bin/index.js'
+	npm run babel-node -- 'src/bin/gendiff.js'
 
 publish:
 	npm publish

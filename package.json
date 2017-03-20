@@ -1,10 +1,15 @@
 {
   "name": "gendiff-cli",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "diff cli utilit",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node",
+    "flow": "flow",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublish": "npm run build",
+    "eslint": "eslint src/*/*.js"
   },
   "repository": {
     "type": "git",
@@ -29,9 +34,10 @@
     "flow-bin": "^0.40.0",
     "flow-typed": "*"
   },
-  "bin": {},
+    "bin": {
+        "gendiff": "dist/bin/gendiff.js"
+    },
   "dependencies": {
-    "commander": "^2.9.0",
-    "readline-sync": "^1.4.6"
+    "commander": "^2.9.0"
   }
 }
