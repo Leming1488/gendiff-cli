@@ -11,8 +11,11 @@ start:
 publish:
 	npm publish
 
+test:
+	npm test
+
 lint:
-	npm run eslint
+	npm run eslint --src test
 
 check-types:
 	npm run flow

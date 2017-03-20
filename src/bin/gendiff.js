@@ -1,5 +1,5 @@
-#!/usr/bin/env node
+#!/usr/bin/env babel-node
 
-import init from '../';
+import init from '../init';
 
 init();
