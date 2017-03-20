@@ -29,7 +29,9 @@
     "flow-bin": "^0.40.0",
     "flow-typed": "*"
   },
-  "bin": {},
+    "bin": {
+        "gendiff": "dist/bin/gendiff.js"
+    },
   "dependencies": {
     "commander": "^2.9.0",
     "readline-sync": "^1.4.6"
