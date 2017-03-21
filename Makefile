@@ -12,7 +12,7 @@ publish:
 	npm publish
 
 test:
-	npm test
+	sudo npm test
 
 lint:
 	npm run eslint --src test
