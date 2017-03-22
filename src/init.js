@@ -1,9 +1,6 @@
 import program from 'commander';
 
-import gendiff from './';
-
-let before;
-let after;
+import genDiff from './';
 
 export default () => {
   program
@@ -12,10 +9,7 @@ export default () => {
     .description('Compares two configuration files and shows a difference.')
     .option('-f, --format [type]', 'Output format')
     .action((firstConfig, secondConfig) => {
-      before = firstConfig;
-      after = secondConfig;
+      console.log(genDiff(firstConfig, secondConfig));
     })
     .parse(process.argv);
-
-  gendiff(before, after);
 };

@@ -8,6 +8,10 @@ install:
 start:
 	npm run babel-node -- 'src/bin/gendiff.js'
 
+build:
+	rm -rf dist
+	npm run bild
+
 publish:
 	npm publish
 

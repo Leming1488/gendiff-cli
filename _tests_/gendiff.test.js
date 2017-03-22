@@ -1,8 +1,7 @@
 import gendiff from '../src';
 
-import jsonAfter from './after.json';
-import jsonBefore from './before.json';
-
+const jsonPath1 = '/examples/before.json';
+const jsonPath2 = '/examples/after.json';
 const jsonEqual =
 `host: hexlet.io
 + timeout: 20
@@ -10,6 +9,6 @@ const jsonEqual =
 - proxy: 123.234.53.22
 + verbose: true`;
 
-test('gendiff', () => {
-  expect(gendiff('/../_tests_/after.json', '/../_tests_/before.json')).toBe(jsonEqual);
+test('jsonDiff', () => {
+  expect(gendiff(jsonPath1, jsonPath2)).toBe(jsonEqual);
 });

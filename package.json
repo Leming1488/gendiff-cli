@@ -1,10 +1,10 @@
 {
   "name": "gendiff-cli",
-  "version": "0.1.0",
+  "version": "0.2.4",
   "description": "diff cli utilit",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "jest",
     "babel-node": "babel-node",
     "flow": "flow",
     "flow-typed": "flow-typed",
