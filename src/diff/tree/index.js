@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
-import Change from './change';
-import Delete from './delete';
-import Same from './same';
-import New from './new';
+import Change from './Change';
+import Delete from './Delete';
+import Same from './Same';
+import New from './New';
 
 export default (before, after) => {
   const merge = Object.assign({}, before, after);
@@ -18,4 +18,4 @@ export default (before, after) => {
     return acc;
   }, new Set());
   return pair;
-}
+};

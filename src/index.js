@@ -2,25 +2,28 @@
 
 import fs from 'fs';
 
-import jsonDiff from './diff/json';
+import diff from './diff/';
 
 const dirname = __dirname;
 const ENCODING = 'utf8';
 
-const readFile = file => fs.readFileSync(dirname + file, ENCODING);
+const readFile = path => fs.readFileSync(dirname + path, ENCODING);
 
 const getFileExtension = fileName => fileName.slice().split('.').pop();
 
-export default (file1, file2) => {
-  const before = readFile(file1);
-  const after = readFile(file2);
+export default (path1, path2) => {
+  const before = readFile(path1);
+  const after = readFile(path2);
 
-  const beforeExt = getFileExtension(file1);
-  const afterExt = getFileExtension(file2);
+  const beforeExt = getFileExtension(path1);
+  const afterExt = getFileExtension(path2);
+
   if (beforeExt === afterExt) {
     switch (beforeExt) {
       case 'json':
-        return jsonDiff(before, after);
+        return diff(JSON.parse(before), JSON.parse(after));
+      default: return false;
     }
   }
+  return true;
 };

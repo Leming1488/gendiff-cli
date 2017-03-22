@@ -4,13 +4,13 @@
   "description": "diff cli utilit",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watchAll",
     "babel-node": "babel-node",
     "flow": "flow",
     "flow-typed": "flow-typed",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublish": "npm run build",
-    "eslint": "eslint src/*/*.js"
+    "eslint": "eslint src"
   },
   "repository": {
     "type": "git",

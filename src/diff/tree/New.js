@@ -1,4 +1,4 @@
-import Base from './base';
+import Base from './Base';
 
 export default class New extends Base {
   constructor(key, value) {
