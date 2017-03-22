@@ -15,6 +15,9 @@ build:
 publish:
 	npm publish
 
+test-watch:
+	sudo npm test -- --watch
+
 test:
 	npm test
 
