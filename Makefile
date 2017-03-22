@@ -16,10 +16,10 @@ publish:
 	npm publish
 
 test:
-	sudo npm test
+	npm test
 
 lint:
-	npm run eslint --src test
+	npm run -- eslint src
 
 check-types:
 	npm run flow
