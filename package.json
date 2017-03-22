@@ -1,15 +1,16 @@
 {
   "name": "gendiff-cli",
-  "version": "0.1.1",
+  "version": "0.2.4",
   "description": "diff cli utilit",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "babel-node": "babel-node",
     "flow": "flow",
+    "flow-typed": "flow-typed",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublish": "npm run build",
-    "eslint": "eslint src/*/*.js"
+    "eslint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -25,19 +26,22 @@
     "babel-cli": "*",
     "babel-core": "*",
     "babel-eslint": "*",
-    "babel-plugin-transform-flow-strip-types": "*",
+    "babel-jest": "*",
     "babel-preset-env": "*",
+    "babel-preset-flow": "*",
     "babel-preset-stage-0": "*",
     "eslint": "*",
     "eslint-config-airbnb-base": "*",
     "eslint-plugin-import": "*",
-    "flow-bin": "^0.40.0",
-    "flow-typed": "*"
+    "flow-bin": "*",
+    "flow-typed": "*",
+    "jest": "*"
   },
-    "bin": {
-        "gendiff": "dist/bin/gendiff.js"
-    },
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
+  },
   "dependencies": {
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "lodash": "^4.17.4"
   }
 }
