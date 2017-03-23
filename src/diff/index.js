@@ -1,9 +1,12 @@
 /* @flow */
 
-import buildTree from './tree/.';
-import printTree from './print/.';
+import parse from './parse';
+import build from './build';
+import render from './render';
 
-export default (before: Object, after: Object) => {
-  const tree = buildTree(before, after);
-  return printTree(tree);
+export default (file1: Object, file2: Object) => {
+  const before = parse(file1);
+  const after = parse(file2);
+  const tree = build(before, after);
+  return render(tree);
 };

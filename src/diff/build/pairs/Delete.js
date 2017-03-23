@@ -1,10 +1,11 @@
 import Base from './Base';
 
 export default class Delete extends Base {
-  constructor(key, value) {
-    super();
+  constructor(...arg) {
+    super(...arg);
     this.state = 'delete';
-    this.key = key;
-    this.value = value;
+  }
+  toString() {
+    return `- ${super.toString()}`;
   }
 }

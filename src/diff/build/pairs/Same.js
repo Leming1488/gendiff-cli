@@ -1,10 +1,8 @@
 import Base from './Base';
 
 export default class Same extends Base {
-  constructor(key, value) {
-    super();
+  constructor(...arg) {
+    super(...arg);
     this.state = 'same';
-    this.key = key;
-    this.value = value;
   }
 }
