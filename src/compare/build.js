@@ -3,7 +3,7 @@ import pairs from './pairs';
 
 export default (before, after) => {
   const merge = Object.assign({}, before, after);
-  const pair = _.reduce(merge, (acc, value, key) => {
+  const structure = _.reduce(merge, (acc, value, key) => {
     if (_.has(before, key) && _.has(after, key)) {
       return (_.isEqual(before[key], value) ?
               acc.add(new pairs.Same(key, before[key])) :
@@ -13,5 +13,5 @@ export default (before, after) => {
             acc.add(new pairs.Delete(key, before[key])) :
             acc.add(new pairs.New(key, after[key])));
   }, new Set());
-  return pair;
+  return structure;
 };
