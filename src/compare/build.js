@@ -1,5 +1,4 @@
 import _ from 'lodash';
-
 import pairs from './pairs';
 
 export default (before, after) => {

@@ -22,7 +22,7 @@ test:
 	npm test
 
 lint:
-	npm run -- eslint src
+	npm run -- eslint 
 
 check-types:
 	npm run flow
