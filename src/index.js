@@ -2,8 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-
-import diff from './diff';
+import compare from './compare';
 
 const encoding = 'utf8';
 
@@ -15,10 +14,10 @@ const makeFile = filePath => ({ data: readFile(filePath), ext: getFileExt(filePa
 
 export default (path1: string, path2: string) => {
   try {
-    const before = makeFile(path1);
-    const after = makeFile(path2);
-    const rezult = diff(before, after);
-    return rezult;
+    const file1 = makeFile(path1);
+    const file2 = makeFile(path2);
+    const diff = compare(file1, file2);
+    return diff;
   } catch (err) {
     switch (err.code) {
       case 'ENOENT':

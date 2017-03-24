@@ -10,12 +10,12 @@
     "flow-typed": "flow-typed",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublish": "npm run build",
-    "eslint": "eslint"
+    "eslint": "eslint  src __tests__/*.js"
   },
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/_tests_/_fixtures_/"
+      "/__tests__/__fixtures__/"
     ]
   },
   "repository": {
