@@ -22,24 +22,23 @@ const parsingData = data => formats[data.ext].parse(data.body);
 const renderTree = tree => `\n{\n${[...tree].reduce((acc, pair) => [...acc, `${pair}`], []).join('')}}`;
 
 export default (path1: string, path2: string) => {
-  const dataFromFile1 = readData(path1);
-  const dataFromFile2 = readData(path2);
+  try {
+    const dataFromFile1 = readData(path1);
+    const dataFromFile2 = readData(path2);
 
-  const parsedData1 = parsingData(dataFromFile1);
-  const parsedData2 = parsingData(dataFromFile2);
+    const parsedData1 = parsingData(dataFromFile1);
+    const parsedData2 = parsingData(dataFromFile2);
 
-  const treeFromMerge = buildTree(parsedData1, parsedData2);
-  const diffFromMerge = renderTree(treeFromMerge);
+    const treeFromMerge = buildTree(parsedData1, parsedData2);
+    const diffFromMerge = renderTree(treeFromMerge);
 
-  return diffFromMerge;
+    return diffFromMerge;
+  } catch (err) {
+    switch (err.code) {
+      case 'ENOENT':
+        throw new Error('File not found');
+      default:
+        throw new Error('Error');
+    }
+  }
 };
-  // } catch (err) {
-  //   switch (err.code) {
-  //     case 'ENOENT':
-  //       console.error('File not found');
-  //       break;
-  //     default:
-  //       console.error('error');
-  //   }
-  // }
-  // return null;

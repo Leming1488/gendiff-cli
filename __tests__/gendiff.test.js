@@ -1,7 +1,10 @@
+import path from 'path';
 import gendiff from '../src';
 
-const root = '__tests__/__fixtures__/plain/';
-const root2 = '__tests__/__fixtures__/nested/';
+
+const root1 = path.join(`${__dirname}`, '__fixtures__/plain');
+const root2 = path.join(`${__dirname}`, '__fixtures__/nested');
+
 const equalPlainDiff =
 `
 {
@@ -11,6 +14,7 @@ const equalPlainDiff =
   - proxy: 123.234.53.22
   + verbose: true
 }`;
+
 const equalNestedDiff =
 `
 {
@@ -40,18 +44,20 @@ const equalNestedDiff =
 }`;
 
 test('jsonDiff', () => {
-  // expect(gendiff(`${root}json/before.json`, `${root}json/after.json`)).toBe(equalPlainDiff);
-  expect(gendiff(`${root2}json/before.json`, `${root2}json/after.json`)).toBe(equalNestedDiff);
+  expect(gendiff(`${root1}/before.json`, `${root1}/after.json`)).toBe(equalPlainDiff);
+  expect(gendiff(`${root2}/before.json`, `${root2}/after.json`)).toBe(equalNestedDiff);
 });
 
 test('ymlDiff', () => {
-  expect(gendiff(`${root}yml/before.yml`, `${root}yml/after.yml`)).toBe(equalPlainDiff);
+  expect(gendiff(`${root1}/before.yml`, `${root1}/after.yml`)).toBe(equalPlainDiff);
+  expect(gendiff(`${root2}/before.yml`, `${root2}/after.yml`)).toBe(equalNestedDiff);
 });
 
-// test('iniDiff', () => {
-//   expect(gendiff(`${root}ini/before.ini`, `${root}ini/after.ini`)).toBe(equalPlainDiff);
-// });
+test('iniDiff', () => {
+  expect(gendiff(`${root1}/before.ini`, `${root1}/after.ini`)).toBe(equalPlainDiff);
+  expect(gendiff(`${root2}/before.ini`, `${root2}/after.ini`)).toBe(equalNestedDiff);
+});
 
-// test('fileNotFound', () => {
-//   expect(gendiff(`${root}json/before.json`, `${root}json/afte.json`)).toBeNull();
-// });
+test('fileNotFound', () => {
+  expect(() => gendiff(`${root}json/before.json`, `${root}json/afte.json`)).toThrow();
+});
