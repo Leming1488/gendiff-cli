@@ -42,10 +42,20 @@ const equalNestedDiff =
         fee: 100500
     }
 }`;
+const equalPlainOutput = `
+Property 'common.setting2' was removed
+Property 'common.setting6' was removed
+Property 'common.setting4' was added with value: blah blah
+Property 'common.setting5' was added with complex value
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group2' was removed
+aProperty 'group3' was added with complex value'
+`;
 
 test('jsonDiff', () => {
   expect(gendiff(`${root1}/before.json`, `${root1}/after.json`)).toBe(equalPlainDiff);
   expect(gendiff(`${root2}/before.json`, `${root2}/after.json`)).toBe(equalNestedDiff);
+  expect(gendiff(`${root2}/before.json`, `${root2}/after.json`, 'plain')).toBe(equalPlainOutput);
 });
 
 test('ymlDiff', () => {

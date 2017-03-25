@@ -34,7 +34,7 @@ const buildTree = (before, after) => Object.keys({ ...before, ...after }).reduce
           acc.add({ state: 'new', key, value: after[key] }));
 }, new Set());
 
-export default (path1: string, path2: string) => {
+export default (path1: string, path2: string, outputFormat) => {
   try {
     const dataFromFile1 = readData(path1);
     const dataFromFile2 = readData(path2);
@@ -43,7 +43,7 @@ export default (path1: string, path2: string) => {
     const parsedData2 = parsingData(dataFromFile2);
 
     const treeFromMerge = buildTree(parsedData1, parsedData2);
-    const diffFromMerge = renderTree(treeFromMerge);
+    const diffFromMerge = renderTree(treeFromMerge, outputFormat);
 
     return diffFromMerge;
   } catch (err) {
