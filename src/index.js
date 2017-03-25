@@ -19,14 +19,14 @@ const buildTree = (before, after) => Object.keys({ ...before, ...after }).reduce
     } else if (typeof before[key] === 'object') {
       return [...acc, { state: 'same', key, value: buildTree(before[key], after[key]) }];
     }
-    return [...acc, { state: 'new', key, value: after[key] }, { state: 'delete', key, value: before[key] }];
+    return [...acc, { state: 'change', key, value: after[key], oldValue: before[key] }];
   }
   return (_.has(before, key) ?
           [...acc, { state: 'delete', key, value: before[key] }] :
           [...acc, { state: 'new', key, value: after[key] }]);
 }, []);
 
-export default (path1: string, path2: string) => {
+export default (path1: string, path2: string, outputFormat = 'complex') => {
   try {
     const dataFromFile1 = readData(path1);
     const dataFromFile2 = readData(path2);
@@ -35,7 +35,7 @@ export default (path1: string, path2: string) => {
     const parsedData2 = parsingData(dataFromFile2);
 
     const treeFromMerge = buildTree(parsedData1, parsedData2);
-    const diffFromMerge = renderTree(treeFromMerge);
+    const diffFromMerge = renderTree(treeFromMerge, outputFormat);
 
     return diffFromMerge;
   } catch (err) {

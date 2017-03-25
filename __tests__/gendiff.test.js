@@ -42,20 +42,32 @@ const equalNestedDiff =
         fee: 100500
     }
 }`;
+const equalPlainOutput = `
+Property 'common.setting2' was removed
+Property 'common.setting6' was removed
+Property 'common.setting4' was added with value: blah blah
+Property 'common.setting5' was added with complex value
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group2' was removed
+Property 'group3' was added with complex value
+`;
 
 test('jsonDiff', () => {
   expect(gendiff(`${root1}/before.json`, `${root1}/after.json`)).toBe(equalPlainDiff);
   expect(gendiff(`${root2}/before.json`, `${root2}/after.json`)).toBe(equalNestedDiff);
+  expect(gendiff(`${root2}/before.json`, `${root2}/after.json`, 'plain')).toBe(equalPlainOutput);
 });
 
 test('ymlDiff', () => {
   expect(gendiff(`${root1}/before.yml`, `${root1}/after.yml`)).toBe(equalPlainDiff);
   expect(gendiff(`${root2}/before.yml`, `${root2}/after.yml`)).toBe(equalNestedDiff);
+  expect(gendiff(`${root2}/before.yml`, `${root2}/after.yml`, 'plain')).toBe(equalPlainOutput);
 });
 
 test('iniDiff', () => {
   expect(gendiff(`${root1}/before.ini`, `${root1}/after.ini`)).toBe(equalPlainDiff);
   expect(gendiff(`${root2}/before.ini`, `${root2}/after.ini`)).toBe(equalNestedDiff);
+  expect(gendiff(`${root2}/before.ini`, `${root2}/after.ini`, 'plain')).toBe(equalPlainOutput);
 });
 
 test('fileNotFound', () => {
