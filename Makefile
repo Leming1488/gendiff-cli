@@ -13,7 +13,7 @@ build:
 	npm run bild
 
 publish:
-	npm publish
+	sudo npm publish
 
 test-watch:
 	sudo npm test -- --watch

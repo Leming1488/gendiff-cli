@@ -3,18 +3,10 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
-import Ini from 'ini';
-import Yaml from 'yamljs';
+import formats from './formats';
 import renderTree from './render';
 
 const encoding = 'utf8';
-
-const formats = {
-  '.ini': Ini,
-  '.yaml': Yaml,
-  '.yml': Yaml,
-  '.json': JSON,
-};
 
 const readData = filePath => ({
   body: fs.readFileSync(filePath, encoding),
