@@ -3,18 +3,10 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
-import Ini from 'ini';
-import Yaml from 'yamljs';
+import formats from './formats';
 import renderTree from './render';
 
 const encoding = 'utf8';
-
-const formats = {
-  '.ini': Ini,
-  '.yaml': Yaml,
-  '.yml': Yaml,
-  '.json': JSON,
-};
 
 const readData = filePath => ({
   body: fs.readFileSync(filePath, encoding),
@@ -23,18 +15,18 @@ const parsingData = data => formats[data.ext].parse(data.body);
 const buildTree = (before, after) => Object.keys({ ...before, ...after }).reduce((acc, key) => {
   if (_.has(before, key) && _.has(after, key)) {
     if (_.isEqual(before[key], after[key])) {
-      return acc.add({ state: 'same', key, value: before[key] });
+      return [...acc, { state: 'same', key, value: before[key] }];
     } else if (typeof before[key] === 'object') {
-      return acc.add({ state: 'same', key, value: buildTree(before[key], after[key]) });
+      return [...acc, { state: 'same', key, value: buildTree(before[key], after[key]) }];
     }
-    return acc.add({ state: 'new', key, value: after[key] }).add({ state: 'delete', key, value: before[key] });
+    return [...acc, { state: 'change', key, value: after[key], oldValue: before[key] }];
   }
   return (_.has(before, key) ?
-          acc.add({ state: 'delete', key, value: before[key] }) :
-          acc.add({ state: 'new', key, value: after[key] }));
-}, new Set());
+          [...acc, { state: 'delete', key, value: before[key] }] :
+          [...acc, { state: 'new', key, value: after[key] }]);
+}, []);
 
-export default (path1: string, path2: string, outputFormat) => {
+export default (path1: string, path2: string, outputFormat = 'complex') => {
   try {
     const dataFromFile1 = readData(path1);
     const dataFromFile2 = readData(path2);
