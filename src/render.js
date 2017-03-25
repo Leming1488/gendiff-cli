@@ -1,13 +1,11 @@
-import indent from 'indent-string';
-
 const operand = {
   new: '+',
   delete: '-',
   same: ' ',
 };
-
+const indent = (str, count) => str.replace(/^(?!\s*$)/mg, ' '.repeat(count));
 const toString = (node, indentCount = 0) => {
-  if (node.value instanceof Set) {
+  if (node.value instanceof Array) {
     return `${indent(node.key, 4)}: {\n` +
       `${[...node.value].reduce((acc, el) => [...acc, `${indent(toString(el, indentCount + 2), 4)}`], []).join('')}${indent('}\n', 4)}`;
   }

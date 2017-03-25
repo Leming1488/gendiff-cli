@@ -23,16 +23,16 @@ const parsingData = data => formats[data.ext].parse(data.body);
 const buildTree = (before, after) => Object.keys({ ...before, ...after }).reduce((acc, key) => {
   if (_.has(before, key) && _.has(after, key)) {
     if (_.isEqual(before[key], after[key])) {
-      return acc.add({ state: 'same', key, value: before[key] });
+      return [...acc, { state: 'same', key, value: before[key] }];
     } else if (typeof before[key] === 'object') {
-      return acc.add({ state: 'same', key, value: buildTree(before[key], after[key]) });
+      return [...acc, { state: 'same', key, value: buildTree(before[key], after[key]) }];
     }
-    return acc.add({ state: 'new', key, value: after[key] }).add({ state: 'delete', key, value: before[key] });
+    return [...acc, { state: 'new', key, value: after[key] }, { state: 'delete', key, value: before[key] }];
   }
   return (_.has(before, key) ?
-          acc.add({ state: 'delete', key, value: before[key] }) :
-          acc.add({ state: 'new', key, value: after[key] }));
-}, new Set());
+          [...acc, { state: 'delete', key, value: before[key] }] :
+          [...acc, { state: 'new', key, value: after[key] }]);
+}, []);
 
 export default (path1: string, path2: string) => {
   try {
