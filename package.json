@@ -1,6 +1,6 @@
 {
   "name": "gendiff-cli",
-  "version": "0.7.0",
+  "version": "0.7.3",
   "description": "diff cli utilit",
   "main": "./dist/index.js",
   "scripts": {
