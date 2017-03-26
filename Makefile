@@ -9,8 +9,8 @@ start:
 	npm run babel-node -- 'src/bin/gendiff.js'
 
 build:
-	rm -rf dist
-	npm run bild
+	sudo rm -rf dist
+	sudo npm run build
 
 publish:
 	sudo npm publish
