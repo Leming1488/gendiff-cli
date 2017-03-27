@@ -2,10 +2,10 @@
 [![Code Climate](https://codeclimate.com/github/Leming1488/gendiff-cli/badges/gpa.svg)](https://codeclimate.com/github/Leming1488/gendiff-cli)
 [![Build Status](https://travis-ci.org/Leming1488/gendiff-cli.svg?branch=master)](https://travis-ci.org/Leming1488/gendiff-cli)
 [![Issue Count](https://codeclimate.com/github/Leming1488/gendiff-cli/badges/issue_count.svg)](https://codeclimate.com/github/Leming1488/gendiff-cli)
-> Compares two configuration files and shows a difference
+> Compares two configuration files and shows a difference.
 
-Input formats [json, ini, yaml]
-Output [plain text, pretty, json]
+Input formats [json, ini, yaml].
+Output [plain text, pretty, json].
 
 ## Install
 
