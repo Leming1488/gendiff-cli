@@ -4,7 +4,7 @@
 [![Issue Count](https://codeclimate.com/github/Leming1488/gendiff-cli/badges/issue_count.svg)](https://codeclimate.com/github/Leming1488/gendiff-cli)
 > Compares two configuration files and shows a difference.
 
-Input formats [json, ini, yaml].
+Input formats [json, ini, yaml]\n
 Output [plain text, pretty, json].
 
 ## Install
