@@ -11,7 +11,8 @@ $ npm install gendiff-cli
 
 ## Usage
 
-`` Usage: gendiff-cli [options] <first_config> <second_config>
+```
+Usage: gendiff-cli [options] <first_config> <second_config>
 
    Compares two configuration files and shows a difference.
    
