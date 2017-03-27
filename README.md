@@ -19,7 +19,7 @@ $ npm install gendiff-cli
 ```
 Usage: gendiff-cli [options] <first_config> <second_config>
 
--f [plain,json, pretty = default]
+-f [plain, json, pretty = default]
 
    Compares two configuration files and shows a difference.
    
