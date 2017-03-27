@@ -2,12 +2,12 @@ export default (tree) => {
   const toJson = (node) => {
     switch (node.type) {
       case 'new':
-        return { add: { [node.key]: node.value } };
+        return { added: { [node.key]: node.value } };
       case 'delete':
-        return { delete: { [node.key]: node.value } };
+        return { deleted: { [node.key]: node.value } };
       case 'change':
-        return { change: { add: { [node.key]: node.value },
-          delete: { [node.key]: node.oldValue } } };
+        return { changed: { added: { [node.key]: node.value },
+          deleted: { [node.key]: node.oldValue } } };
       case 'same':
         if (node.value instanceof Array) {
           return { [node.key]: node.value

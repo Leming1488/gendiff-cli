@@ -56,35 +56,35 @@ const equalJsonOutput =
 `{
   "common": {
     "setting1": "Value 1",
-    "delete": {
+    "deleted": {
       "setting6": {
         "key": "value"
       }
     },
     "setting3": true,
-    "add": {
+    "added": {
       "setting5": {
         "key5": "value5"
       }
     }
   },
   "group1": {
-    "change": {
-      "add": {
+    "changed": {
+      "added": {
         "baz": "bars"
       },
-      "delete": {
+      "deleted": {
         "baz": "bas"
       }
     },
     "foo": "bar"
   },
-  "delete": {
+  "deleted": {
     "group2": {
       "abc": "12345"
     }
   },
-  "add": {
+  "added": {
     "group3": {
       "fee": "100500"
     }
